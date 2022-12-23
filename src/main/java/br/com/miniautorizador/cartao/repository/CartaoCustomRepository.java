@@ -14,6 +14,7 @@ public class CartaoCustomRepository {
         this.em = em;
     }
 
+    //Método criado para evitar números de cartão repetidos.
     public String buscaProximoNumeroCartao() {
         return Optional.ofNullable(em.createQuery(
                                 "select max(c.numeroCartao) from Cartao c", String.class)

@@ -16,6 +16,7 @@ public class CartaoService {
     @Autowired
     private CartaoCustomRepository cartaoCustomRepository;
 
+    //Neste método acabei tendo de usar um if para evitar senhas muito fracas.
     public CartaoDTO salva(String senha) throws RuntimeException {
         if(senha.length() < 6) throw new RuntimeException("Senha deve possuir mais de 6 dígitos");
         Cartao cartao = new Cartao();
