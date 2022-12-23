@@ -48,4 +48,12 @@ public class CartaoControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isNotFound());
     }
+
+    @Test
+    public void deveBuscarSaldoCartao() throws Exception {
+        when(cartaoService.buscaSaldo(any(String.class))).thenReturn(CartaoUtil.buscaCartaoDTO());
+
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/cartoes/2222444466668888"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }

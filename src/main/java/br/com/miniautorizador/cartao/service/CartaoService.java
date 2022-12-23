@@ -16,7 +16,6 @@ public class CartaoService {
     @Autowired
     private CartaoCustomRepository cartaoCustomRepository;
 
-    //Neste método acabei tendo de usar um if para evitar senhas muito fracas.
     public CartaoDTO salva(String senha) throws RuntimeException {
         if(senha.length() < 6) throw new RuntimeException("Senha deve possuir mais de 6 dígitos");
         Cartao cartao = new Cartao();
@@ -24,6 +23,11 @@ public class CartaoService {
         cartao.setNumeroCartao(cartaoCustomRepository.buscaProximoNumeroCartao());
         cartao.setSaldo(500.00);
         cartaoRepository.save(cartao);
+        return new CartaoDTO().converter(cartao);
+    }
+
+    public CartaoDTO buscaSaldo(String numeroCartao) {
+        Cartao cartao = cartaoCustomRepository.buscaCartaoPeloNumero(numeroCartao);
         return new CartaoDTO().converter(cartao);
     }
 }

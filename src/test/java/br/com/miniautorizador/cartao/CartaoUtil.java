@@ -23,4 +23,11 @@ public class CartaoUtil {
         senhaCartaoDTO.setSenha(null);
         return senhaCartaoDTO;
     }
+
+    public static CartaoDTO buscaCartaoDTO() {
+        CartaoDTO cartaoDTO = new CartaoDTO();
+        cartaoDTO.setNumeroCartao("2222444466668888");
+        cartaoDTO.setSaldo(500.0);
+        return cartaoDTO;
+    }
 }
